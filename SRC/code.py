@@ -22,10 +22,10 @@ dfc= pd.read_csv('/Users/matiasgonzalez/Documents/dsi/Git/CapstoneI/Data/US_Temp
 #toggle to show full dataframe
 #pd.set_option("display.max_rows", None, "display.max_columns", None)
 '''
-# *********************************************************************
-# data cleaning 
-# *********************************************************************
-# '''
+*********************************************************************
+data cleaning 
+*********************************************************************
+'''
 #select only entires in the  US
 df_US = dfc[(dfc.Country=='US')]
 #drop unneccessary columns 
@@ -41,33 +41,33 @@ df_US3 = df4.drop(df4[df4['City']=='Yuma'].index)
 #create a new csv
 df_US3.to_csv('Data/US_Temps_Final.csv', index = False)
 '''
-# *********************************************************************
-# reimport file
-# *********************************************************************
-# '''
-# df= pd.read_csv('Data/US_Temps.csv')
-# '''
-# *********************************************************************
-# data exploration
-# *********************************************************************
-# '''
-#view complete data frame
+*********************************************************************
+reimport file
+*********************************************************************
+'''
+df= pd.read_csv('Data/US_Temps.csv')
+'''
+*********************************************************************
+data exploration
+*********************************************************************
+'''
+view complete data frame
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 #get info on dataframe
-print(df.info())
+print(dfc.info())
 #view first couple of lines
-print(df.head())
+print(dfc.head())
 #view full data frame
-print(df)
+print(dfc)
 #how many cities
-print(len(df.City.unique()))
+print(len(dfc.City.unique()))
 #look at data for one city
-print(df_month[df_month['City']=='Fairbanks'])
-# '''
-# *********************************************************************
-# create a data frame for monthly avgs and yearly avgs
-# *********************************************************************
-# '''
+print(dfc[dfc['City']=='Fairbanks'])
+'''
+*********************************************************************
+create a data frame for monthly avgs and yearly avgs
+*********************************************************************
+'''
 
 #seperate df by avg temp/month
 df_month = (
@@ -92,10 +92,10 @@ df_city_temp = (
       )
 df_city = df_city_temp.copy()
 '''
-# *********************************************************************
-# t-test (with indepoendent t test)
-# *********************************************************************
-# '''
+*********************************************************************
+t-test (with indepoendent t test)
+*********************************************************************
+'''
 df_temps_95_07 = df_city[df_city['Year'] < 2008]
 temps_95_07 = (
        df_temps_95_07.groupby(['City'])['AvgTemperature'].mean(['mean'])
@@ -115,12 +115,11 @@ temps_19 = temps_08_19.drop(columns=['City'])
 ind_ttest = stats.ttest_ind(temps_95['AvgTemperature'], temps_19['AvgTemperature'])
 print(ind_ttest)
 
-# '''
-# # *********************************************************************
-# # t-test (with Anova)
-# # What type of statistical value do I get? The t-test and ANOVA produce a test statistic value (“t” or “F”, respectively), which is converted into a “p-value.” A p-value is the probability that the null hypothesis – that both (or all) populations are the same – is true. In other words, a lower p-value reflects a value that is more significantly different across populations. Biomarkers with significant differences between sample populations have p-values ≤ 0.05.
-# # *********************************************************************
-# '''
+'''
+*********************************************************************
+t-test (with Anova)
+*********************************************************************
+'''
 #avg of diff cities, over years
 avg_temp_years = {}
 for i in range(1995,2020):
