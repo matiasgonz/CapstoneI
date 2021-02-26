@@ -1,7 +1,7 @@
 # Is Climate Change real?
 
 <p align="center">
-  <img src="images/header.jpg" width = 900 height = 60>
+  <img src="/Users/matiasgonzalez/Documents/dsi/Git/CapstoneI/Images.ClimateChange.jpg" width = 900 height = 60>
 </p>
 
 
