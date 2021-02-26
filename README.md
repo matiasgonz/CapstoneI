@@ -1,9 +1,6 @@
 # Is Climate Change real?
 
-<p align="center">
-  <img src="/Users/matiasgonzalez/Documents/dsi/Git/CapstoneI/Images.ClimateChange.jpg" width = 900 height = 60>
-</p>
-
+![](Images/ClimateChange.jpg)
 
 *Capstone I Project for Galvanize Data Science Immersive*
 
