@@ -42,17 +42,23 @@ We are going to use an ANOVA (Analysis of Variance) T-Test to statistically proo
 
 # Exploratory Data Analysis and Data Cleaning
 So first we get the general info and a look at the data.
-<p align="center">
-  <img src="images/math_pairplot.png" width = 400>
-  <img src="images/port_pairplot.png" width = 400>
-</p>
-We can see from this initial exploration that there are 8 columns to describe the data and we have around 3 million entries. 
+
+
+![](Images/OG_DF_INFO.png)
+
+
+We can see from this initial exploration that there are 8 columns to describe the data and we have around 3 million entries. Now lets take a peek at the actual data frame
+
+
+![](Images/OG_df.png)
+
 
 Since we are only going to be working with US cities we want to exlude all non US cities from our data. Since we were also able to see that some terretories are included we will also be droppping those. We will also be dropping all values set to -99 since those are used as placeholders for invalid data.  
 
 After we have filtered out our data for all unnecessary cities we take a look at the data again. We will extract our unique cities inside the data. We are also going to take an overall look at these cities in order to make sure we have the correct data. 
 
 After dropping some cities which had incomplete data we can see these are the cities we are working with. We also had to drop the year 2020 from the study since it was incomplete. Further data cleaning was done with min and max to identiify outliers. 
+
 
 cities = ['Birmingham', 'Huntsville', 'Mobile', 'Montgomery', 'Anchorage',
        'Fairbanks', 'Juneau', 'Flagstaff', 'Phoenix', 'Tucson', 'Yuma',
@@ -90,23 +96,25 @@ cities = ['Birmingham', 'Huntsville', 'Mobile', 'Montgomery', 'Anchorage',
 
 After confirming we have the right data selection and cleaned all of our data we can drop unneccesary columns. (Region and country) an this is how the dataframe we will be working with looks like. 
 
-<p align="center">
-  <img src="images/m_g3_dist.png" width = 400>
-  <img src="images/p_g3_dist.png" width = 400>
-</p>
-
+![](Images/DF.png)
 
 [Back to Top](#Table-of-Contents)
 
 # Data Visualization
 
 ## Barplots
-<p align="center">
-  <img src="images/m_g3_dist.png" width = 400>
-  <img src="images/p_g3_dist.png" width = 400>
-</p>
+![](Images/Bar_95.png)
+
+![](Images/Bar_19.png)
+
+From a first impression we can defintly see these values are diffrent, with most of them being lower.  
 
 ## Heat map
+![](Images/HeatMap_95.png)
+
+![](Images/HeatMap_19.png)
+
+Plotly decided it was not going to work so we have this incomplete heatmap. What we were trying to do  here was show with colors the difference in temperature between years. We can still see that there has been a change in temperature since the scales are diffrent. 
 
 [Back to Top](#Table-of-Contents)
 
@@ -119,9 +127,11 @@ The t-test and ANOVA produce a test statistic value (“t” or “F”, respect
 ## Results and Interpretation
 Our result when preforming an ANOVA T-test are as follows. 
 
+
 F_onewayResult(statistic=4.8186759678453335, pvalue=0.028155013645666947)
 
-As we can see form out results our pvalue is pretty low, it being 0.028. Like stated above the smaller our pvalue is the greater chance to prove our null hypothesis. In this case since it is so low we will accept our hypothesis and we can safely say that there is a significant change in the values of our variables. 
+
+As we can see from out results our pvalue is pretty low, it being 0.028. Like stated above the smaller our pvalue is the greater chance to prove our null hypothesis. In this case since it is so low we will accept our hypothesis and we can safely say that there is a significant change in the values of our variables. 
 
 [Back to Top](#Table-of-Contents)
 

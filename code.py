@@ -115,74 +115,74 @@ dfc= pd.read_csv('Data/US_Temps_Final.csv')
 # # What type of statistical value do I get? The t-test and ANOVA produce a test statistic value (“t” or “F”, respectively), which is converted into a “p-value.” A p-value is the probability that the null hypothesis – that both (or all) populations are the same – is true. In other words, a lower p-value reflects a value that is more significantly different across populations. Biomarkers with significant differences between sample populations have p-values ≤ 0.05.
 # # *********************************************************************
 # '''
-#avg of diff cities, over years
-avg_temp_years = {}
-for i in range(1995,2020):
-    avg_temp_years[i] = dfc[dfc['Year'] == i]
+# #avg of diff cities, over years
+# avg_temp_years = {}
+# for i in range(1995,2020):
+#     avg_temp_years[i] = dfc[dfc['Year'] == i]
 
-df_data = {}
-for i in range(1995,2020):
-    df_data[i] = avg_temp_years[i].drop(columns=['City','Year'])
+# df_data = {}
+# for i in range(1995,2020):
+#     df_data[i] = avg_temp_years[i].drop(columns=['City','Year'])
 
-t_test = {}
-for i in range(1995,2019):
-    t_test[i] = stats.f_oneway(df_data[i]['AvgTemperature'], df_data[i+1]['AvgTemperature'])
+# t_test = {}
+# for i in range(1995,2019):
+#     t_test[i] = stats.f_oneway(df_data[i]['AvgTemperature'], df_data[i+1]['AvgTemperature'])
 
-t_test[2019] = stats.f_oneway(df_data[2018]['AvgTemperature'], df_data[2019]['AvgTemperature'])
-t_test[2020] = stats.f_oneway(df_data[1995]['AvgTemperature'], df_data[2019]['AvgTemperature'])
+# t_test[2019] = stats.f_oneway(df_data[2018]['AvgTemperature'], df_data[2019]['AvgTemperature'])
+# t_test[2020] = stats.f_oneway(df_data[1995]['AvgTemperature'], df_data[2019]['AvgTemperature'])
 
-# t_test_ex = t_test[i] = stats.f_oneway(df_data[1995]['AvgTemperature'], df_data[1996]['AvgTemperature'], df_data[1997]['AvgTemperature'],df_data[1998]['AvgTemperature'],df_data[1999]['AvgTemperature'],df_data[2000]['AvgTemperature'], df_data[2001]['AvgTemperature'],df_data[2002]['AvgTemperature'],df_data[2003]['AvgTemperature'],df_data[2004]['AvgTemperature'],df_data[2005]['AvgTemperature'],df_data[2006]['AvgTemperature'],df_data[2007]['AvgTemperature'],df_data[2008]['AvgTemperature'],df_data[2009]['AvgTemperature'],df_data[2010]['AvgTemperature'],df_data[2011]['AvgTemperature'],df_data[2012]['AvgTemperature'],df_data[2013]['AvgTemperature'],df_data[2014]['AvgTemperature'],df_data[2015]['AvgTemperature'],df_data[2016]['AvgTemperature'],df_data[2017]['AvgTemperature'],df_data[2018]['AvgTemperature'],df_data[2019]['AvgTemperature'])
-# print (t_test_ex)
+# # t_test_ex = t_test[i] = stats.f_oneway(df_data[1995]['AvgTemperature'], df_data[1996]['AvgTemperature'], df_data[1997]['AvgTemperature'],df_data[1998]['AvgTemperature'],df_data[1999]['AvgTemperature'],df_data[2000]['AvgTemperature'], df_data[2001]['AvgTemperature'],df_data[2002]['AvgTemperature'],df_data[2003]['AvgTemperature'],df_data[2004]['AvgTemperature'],df_data[2005]['AvgTemperature'],df_data[2006]['AvgTemperature'],df_data[2007]['AvgTemperature'],df_data[2008]['AvgTemperature'],df_data[2009]['AvgTemperature'],df_data[2010]['AvgTemperature'],df_data[2011]['AvgTemperature'],df_data[2012]['AvgTemperature'],df_data[2013]['AvgTemperature'],df_data[2014]['AvgTemperature'],df_data[2015]['AvgTemperature'],df_data[2016]['AvgTemperature'],df_data[2017]['AvgTemperature'],df_data[2018]['AvgTemperature'],df_data[2019]['AvgTemperature'])
+# # print (t_test_ex)
 
-#print out dictionary with t test and final value being first year and last year 
-for i in range(1995,2020):
-    print (t_test[i])
+# #print out dictionary with t test and final value being first year and last year 
+# for i in range(1995,2020):
+#     print (t_test[i])
 '''
 *********************************************************************
 create pyplot with data overlaid on top of geographical map
 *********************************************************************
 '''
-# df_temps_95 = dfc[dfc['Year'] == 2019]
-# df_temps_19 = dfc[dfc['Year'] == 2019]
+df_temps_95 = dfc[dfc['Year'] == 2019]
+df_temps_19 = dfc[dfc['Year'] == 2019]
 
-# df_plotly = (
-#        dfc.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
-#       .reset_index()
-#       .rename(columns={'mean': 'AvgTemperature'})
-#       .sort_values(by=['Year','State'])
-#       )
-# df_plotly_95 = (
-#        df_temps_95.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
-#       .reset_index()
-#       .rename(columns={'mean': 'AvgTemperature'})
-#       .sort_values(by=['Year','State'])
-#       )
-# df_plotly_19 = (
-#        df_temps_19.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
-#       .reset_index()
-#       .rename(columns={'mean': 'AvgTemperature'})
-#       .sort_values(by=['Year','State'])
-#       )
-# #df_plotly['Rank_hottest'] = df_plotly.groupby(by=['Year'])['AvgTemperature'].rank(method="min",ascending=False)
-# #df_plotly['Rank_coldest'] = df_plotly.groupby(by=['Year'])['AvgTemperature'].rank(method="min",ascending=True)
+df_plotly = (
+       dfc.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
+      .reset_index()
+      .rename(columns={'mean': 'AvgTemperature'})
+      .sort_values(by=['Year','State'])
+      )
+df_plotly_95 = (
+       df_temps_95.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
+      .reset_index()
+      .rename(columns={'mean': 'AvgTemperature'})
+      .sort_values(by=['Year','State'])
+      )
+df_plotly_19 = (
+       df_temps_19.groupby(['Year','State'])['AvgTemperature'].mean(['mean'])
+      .reset_index()
+      .rename(columns={'mean': 'AvgTemperature'})
+      .sort_values(by=['Year','State'])
+      )
+#df_plotly['Rank_hottest'] = df_plotly.groupby(by=['Year'])['AvgTemperature'].rank(method="min",ascending=False)
+#df_plotly['Rank_coldest'] = df_plotly.groupby(by=['Year'])['AvgTemperature'].rank(method="min",ascending=True)
 
-# fig = (
-#       express.choropleth(
-#                  df_plotly2               
-#                 ,locations='State'      
-#                 ,color='AvgTemperature'
-#                 ,animation_frame='Year'
-#                 ,color_continuous_scale='Portland' 
-#                 ,height=600
-#                 ,scope='usa')
-#   .update_layout(
-#                  title_text='US AVERAGE TEMPERATURE'
-#                 ,title_x=0.3
-#                 ,margin=dict(r=10, t=40, b=10, l=10)
-#                 ,coloraxis_colorbar_title='Temp °F')
+fig = (
+      express.choropleth(
+                 df_plotly               
+                ,locations='State'      
+                ,color='AvgTemperature'
+                ,animation_frame='Year'
+                ,color_continuous_scale='Portland' 
+                ,height=600
+                ,scope='usa')
+  .update_layout(
+                 title_text='US AVERAGE TEMPERATURE'
+                ,title_x=0.3
+                ,margin=dict(r=10, t=40, b=10, l=10)
+                ,coloraxis_colorbar_title='Temp °F')
     
-# )
-# fig.show()
+)
+fig.show()
 '''
 *********************************************************************
 bar graphs
