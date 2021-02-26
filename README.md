@@ -1,2 +1,2 @@
 # CapstoneI
-cause we ballers
+Open master branch
