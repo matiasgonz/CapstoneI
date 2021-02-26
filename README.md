@@ -148,4 +148,4 @@ As we can see from our results our p-value is pretty low, it is 0.028. As stated
 # Conclusion
 From our data exploration and statistical testing, we have proved our hypothesis and can reject our null. Our p-value was calculated at 0.028 which is lower than our threshold of 0.05. We set a pretty low threshold to prove our hypothesis without a doubt and that is what we have done. We have successfully demonstrated that there is a satistical significant difference in US major city temperatures from 1995 to 2019. 
 
-[Back to Top](#Table-of-Con
+[Back to Top](#Table-of-Contents)
